@@ -1,0 +1,191 @@
+/* CSS Stylesheet 
+*/
+html, body{
+    margin: 0px;
+    padding: 0px;
+    background-color: #8177b7/*#f5999e*/;
+    text-align: center;
+
+    text-color:#99F5C2;
+      
+   
+     
+  
+}
+
+
+
+#map {
+      
+      height: 50%;
+
+   }
+   
+#floating-panel {
+        
+       
+        z-index: 5;
+        background-color: #fff;
+        padding: 5px;
+        border: 1px solid #999;
+        text-align: center;
+        font-family: 'Roboto','sans-serif';
+        line-height: 30px;
+        padding-left: 10px;
+}
+
+div.header {
+  /*background-image: url(https://goo.gl/MdwGk7);*/
+  background-size: cover;
+  height: 700px;
+  
+  
+}
+
+h1 {
+  
+  font-size: 40px;
+  font-family: Palatino;
+  color:#99F5C2;
+
+  
+  
+}
+
+.partypic {
+  
+  width: 100%;
+  height: auto;
+}
+
+
+input {
+    text-align: center;
+    color: #517fa4;
+}
+
+div.fieldSet {
+    border: solid black thin;
+    width: 500px;
+    background-color: #99F5C2;
+  
+}
+
+fieldset {
+  border: none;
+  margin: 0 0 0 -10px;
+  padding: 0;
+  
+}
+
+legend {
+  font-size: 20px;
+  background-color: blue;
+  color: white;
+  width: 98%;
+  padding: 5px;
+  text-align: center;
+  
+}
+
+label.field {
+  text-align: right;
+  width: 100px;
+  float: left;
+  font-weight: bold;
+}
+
+input.textbox-300 {
+  width: 300px;
+  float: left;
+}
+
+
+fieldset p {
+  clear: both;
+  padding: 5px;
+}
+
+label span, .required {
+  color: red;
+  font-weight: bold;
+}
+
+#footer {
+  font-size: 0.75rem;
+}
+
+
+
+
+
+/*
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta char-set="utf-8">
+    <title>The Plug</title>
+     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <link type="text/css" rel="stylesheet" href="main.css"/>
+  </head>
+  <body>
+  
+    <div class="container-fluid">
+    
+      <div class="header">
+	<h1>The Plug</h1>
+      </div>
+      
+      <div class="container">
+	
+      </div>
+    
+    
+    
+    
+    </div>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <img class ="partypic" src="https://goo.gl/JCqjt"/>
+      
+  </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+*/
+
+
+
+
+

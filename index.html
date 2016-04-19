@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Geocoding service</title>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <style>
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+
+    </style>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+     
+    <link type="text/css" rel="stylesheet" href="main.css"/>
+    
+  </head>
+  <body>
+    
+    
+    
+	  <div>
+	      <h1>The Plug</h1>
+	  </div>
+	  
+	  
+	  <div id="floating-panel">
+	    <input id="address" type="textbox" value="Sydney, NSW">
+	    <input id="submit" type="button" value="Geocode">
+	  </div>
+	  
+	  
+	  <div class ="" id="map"></div>
+	  <script>
+	    function initMap() {
+	      var map = new google.maps.Map(document.getElementById('map'), {
+		zoom: 15,
+		center: {lat: -34.397, lng: 150.644}
+	      });
+	      var geocoder = new google.maps.Geocoder();
+
+	      document.getElementById('submit').addEventListener('click', function() {
+		geocodeAddress(geocoder, map);
+	      });
+	    }
+
+	    function geocodeAddress(geocoder, resultsMap) {
+	      var address = document.getElementById('address').value;
+	      geocoder.geocode({'address': address}, function(results, status) {
+		if (status === google.maps.GeocoderStatus.OK) {
+		  resultsMap.setCenter(results[0].geometry.location);
+		  var marker = new google.maps.Marker({
+		    map: resultsMap,
+		    position: results[0].geometry.location
+		  });
+		} else {
+		  alert('Geocode was not successful for the following reason: ' + status);
+		}
+	      });
+	    }
+	  </script>
+	  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA9Fi4kDQOQDatiUlF2EyvWDEt7Y-wG-oA &callback=initMap">
+	  </script>
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  </body>
+</html>
