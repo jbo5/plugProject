@@ -2,6 +2,13 @@
 require("phpsqlsearch_dbinfo.php");
 
 
+// Get parameters from URL
+$center_lat = $_GET["lat"];
+$center_lng = $_GET["lng"];
+$radius = $_GET["radius"];
+
+
+
 function parseToXML($htmlStr)
 {
 $xmlStr=str_replace('<','&lt;',$htmlStr);
@@ -22,7 +29,13 @@ if (!$db_selected) {
   die ('Can\'t use db : ' . mysql_error());
 }
 // Select all the rows in the markers table
-$query = "SELECT * FROM markers WHERE 1";
+//$query = "SELECT * FROM markers WHERE 1";
+$query = sprintf("SELECT address, name, lat, lng, ( 3959 * acos( cos( radians('%s') ) * cos( radians( lat ) ) * cos( radians( lng ) - radians('%s') ) + sin( radians('%s') ) * sin( radians( lat ) ) ) ) AS distance FROM markers HAVING distance < '%s' ORDER BY distance LIMIT 0 , 20",
+  mysql_real_escape_string($center_lat),
+  mysql_real_escape_string($center_lng),
+  mysql_real_escape_string($center_lat),
+  mysql_real_escape_string($radius));
+  
 $result = mysql_query($query);
 if (!$result) {
   die('Invalid query: ' . mysql_error());
