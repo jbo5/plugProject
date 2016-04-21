@@ -1,0 +1,200 @@
+<!DOCTYPE html> 
+<html lang="en">
+
+  <head>
+    <meta char-set="utf-8">
+    <title>The Plug</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+     
+    <link type="text/css" rel="stylesheet" href="main.css"/>
+    
+    
+    
+    <script type="text/javascript" src="//code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment-with-locales.js"></script>
+    <script src="//cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/e8bddc60e73c1ec2475f827be36e1957af72e2ea/src/js/bootstrap-datetimepicker.js"></script>
+  </head>
+  
+  
+  <body>
+  
+      <div class="container">
+	<div class="row">
+	  <div class="col-xs-12">
+	     <h1>The Plug</h1>
+	  
+	  
+	  <form action="" method="">
+	  
+	    <div class="form-group">
+	      <label for="partyName">Party Name</label>
+	      <input type="text" class="form-control" id="partyName">
+	    </div>
+	    <div class="form-group">
+	      <label for="partyAddress">Party Address</label>
+	      <input type="text" class="form-control" id="partyAddress">
+	    </div>
+	    
+	    <div class="form-group">
+	      <label for="partyComment">Party Description</label>
+	      <input type="text" class="form-control" id="partyComment">
+	    </div>
+	    
+	    <div class="form-group">
+	      <label for="partyTime">Party Time</label>
+	      <div class='input-group date' id="datetimepicker1">
+		<input type='text' class="form-control"  id="partyDate"/>
+		<span class="input-group-addon">
+		  <span class="glyphicon glyphicon-calendar"></span>
+		</span>
+	      </div>
+	    </div>	    
+	
+	    <script type="text/javascript">
+	      $(function () {
+		  $("#datetimepicker1").datetimepicker();
+		});
+	    </script>
+	    
+	    <div class="form-group">
+	      <label for="file-upload">Upload A Picture</label>
+	      <input type="file" class="form-control" id="file-upload">
+	    </div>
+	    
+	    <div class="row">
+	    
+	      <div class="col-xs-6">
+	      
+		<div class="form-group">
+		  <label for="username">UserName</label>
+		  <input type="text" class="form-control" id="username">
+		</div>
+		
+	      </div>
+	      <div class="col-xs-6">
+	      
+		<div class="form-group">
+		  <label for="password">Password</label>
+		  <input type="password" class="form-control" id="password">
+		</div>
+		
+	      </div>
+	      
+	    </div>
+	    
+	    
+	    
+	    
+	     
+	  
+	  
+	    <button class="btn btn-primary" type="button" onclick="postPartyRequest()">Submit</button>
+	  </form>
+	  
+	  
+	  <script>
+	  var request;
+	  function postPartyRequest()
+	  {
+		  var partyName = document.getElementById("partyName").value;
+		  var partyAddress = document.getElementById("partyAddress").value;
+		  var partyComment = document.getElementById("partyComment").value;
+		  var partyTime = document.getElementById("partyDate").value;
+		  var partyPhoto = document.getElementById("file-upload").value;
+		  var username = document.getElementById("username").value;
+		  var password = document.getElementById("password").value;
+		  
+		  
+		  
+		  request = new XMLHttpRequest();
+		  request.onreadystatechange = handleResponse;
+		  request.open("POST","rpc.php",true);
+		  request.setRequestHeader("Content-type","application/json");
+		  var data = JSON.stringify({request:"Post Party", partyName: partyName ,partyAddress: partyAddress,
+					      partyComment: partyComment, partyTime: partyTime, partyPhoto: partyPhoto,
+					      password: password, username: username});
+		  request.send(data);
+		  
+	  }
+	  function handleResponse()
+	  {
+		  document.getElementById("output").innerHTML = "<H1>GOT HERE</H1>"+
+			  "<p>"+request.responseText+"</p>";
+	  }
+	  </script>
+
+	  <div id="output"></div>
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	 <div>
+	  
+	</div>
+	
+	
+	
+	
+	<div class="container">
+	  <div class="btn-group btn-group-justified btn-fixed-bottom">
+	    <a href="partyLocator.html" class="btn btn-primary"> Find Parties</a>
+	    <a href="index.html" class="btn btn-primary">Home </a>
+	    <a href="#" class="btn btn-primary"> Settings</a>
+	    <a href="postParty.html" class="btn btn-primary">Post a Party</a>
+	  </div>
+	  <a href="login_signup.html" class="btn btn-primary"> Log Out</a>
+	</div>
+	
+	
+      
+      </div>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <!--
+
+    <div class="container-fluid">
+      <h1>The Plug</h1>
+      <div class="row">
+      
+	<div class="col-sm-3">
+	  <h4>Upload a picture</h4>
+	</div>
+	
+	<div class="col-sm-3">
+	  <p>Party Name: <input type="text" name = "partyName"/></p>
+	<div>
+	
+	<div class="col-sm-3">
+	  <p>Party Location: <input type="text" name = "partyName"/></p>
+	<div>
+	
+	
+	
+      </div>      
+      
+    </div>
+    
+    -->
+    
+  </body>
+  
+</html>

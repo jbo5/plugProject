@@ -130,28 +130,24 @@ switch($request["request"])
 	
 
     case "Post Party":
-	$username = $_POST["username"];
-	$password = $_POST["password"];
-	$partyName= $_POST["partyName"];
-	$partyLocation = $_POST["partyLocation"];
 	
-	$address = $_POST["address"];
-	$city = $_POST["city"];
-	$state = $_POST["state"];
-	$zip = $_POST["zip"];
-	$partyLocation = $address.' '. $city.' '. $state.' '.$zip;
+	$username = $request["username"];
+	$password = $request["password"];
+	$partyName= $request["partyName"];
+	$partyLocation = $request["partyAddress"];
+	
+	//$address = $_POST["address"];
+	//$city = $_POST["city"];
+	//$state = $_POST["state"];
+	//$zip = $_POST["zip"];
+	//$partyLocation = $address.' '. $city.' '. $state.' '.$zip;
 	//echo $partyLocation;
 	
-	$partyTime = $_POST["partyTime"];
-	$comment = $_POST["comment"];
+	$partyTime = $request["partyTime"];
+	$partyComment = $request["partyComment"];
 	
-	$day = $_POST['day'];
-	$month = $_POST['month'];
-	$year = $_POST['year'];
-	$minute = $_POST['minute'];
-	$hour = $_POST['hour'];
-	$ampm = $_POST['ampm'];
-	$date = date('Y-m-d H:i:s',strtotime($year."-".$month."-".$day." ".$hour.":".$minute." ".$ampm));
+	
+	
 	//$date = date('Y-m-d H:i:s',strtotime($month.' '.$day.','.$year.' '.$hour.':'.$minute.' '.$ampm)); 
 	//$date = date('Y-m-d H:i:s',strtotime($hour.':'.$minute.$ampm.' '.$month.' '.$day.' '.$year)); 
 	
@@ -164,7 +160,7 @@ switch($request["request"])
 	{
 		$response = "Login Successful!<p>";
 		$post = new partyPost("connect.ini");
-		$response = $post->addNewParty($username, $partyName, $partyLocation, $date, $comment);
+		$response = $post->addNewParty($username, $partyName, $partyLocation, $partyTime, $partyComment);
 		if ($response['success']===true)
 		{
 			$response = "Party Positng Successful!<p>";

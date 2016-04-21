@@ -60,8 +60,10 @@ class partyPost
       //2016-12-20 08:00
       //$partyTime = date("Y-m-d H:i:s", $partyTime);
       $comment = $this->db->real_escape_string($comment);
+      
+      //STR_TO_DATE('$partyTime','%m/%d/%Y %h:%i:%s %p')
       $addQuery = "insert into parties (clientName, partyName, partyLocation, partyTime, partyComments) 
-			values ('$clientName','$partyName', '$partyLocation', '$partyTime', '$comment');";
+			values ('$clientName','$partyName', '$partyLocation', STR_TO_DATE('$partyTime','%m/%d/%Y %h:%i %p'), '$comment');";
       $results = $this->db->query($addQuery);
       if(!$results)
       {
