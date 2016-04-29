@@ -89,14 +89,84 @@
 	     
 	  
 	  
-	    <button class="btn btn-primary" type="button" onclick="postPartyRequest()">Submit</button>
+	    <button class="btn btn-primary" type="button" onclick="postPartyRequest() ">Submit</button>
 	  </form>
+	  
+	  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA9Fi4kDQOQDatiUlF2EyvWDEt7Y-wG-oA">
+	  
+	  </script>
+	  <script>
+	    
+	    function codeAddress() {
+	      var geocoder = new google.maps.Geocoder();
+	      var address = document.getElementById("partyAddress").value;
+
+	      geocoder.geocode( { 'address': address}, function(results, status) {
+		if (status == google.maps.GeocoderStatus.OK) {
+		  var loc=[]; // no need to define it in outer function now
+		  loc[0]=results[0].geometry.location.lat();
+		  loc[1]=results[0].geometry.location.lng();
+
+		  display( loc ); 
+
+		} else {
+		  alert("Geocode was not successful for the following reason: " + status);
+		}
+	      });
+
+	    }
+
+	    function display( long_lat ){
+	      alert(long_lat);
+	    }
+	  </script>
+	  
+	  
+	  
+	  
+	  
+	  
+	  
 	  
 	  
 	  <script>
 	  var request;
 	  function postPartyRequest()
 	  {
+	  
+	      var geocoder = new google.maps.Geocoder();
+	      var address = document.getElementById("partyAddress").value;
+	      
+	      var lat;
+	      var lng;
+
+	      geocoder.geocode( { 'address': address}, function(results, status) {
+		if (status == google.maps.GeocoderStatus.OK) {
+		  var loc=[]; // no need to define it in outer function now
+		  lat=results[0].geometry.location.lat();
+		  lng=results[0].geometry.location.lng();
+
+		  display( lng ); 
+
+		} else {
+		  alert("Geocode was not successful for the following reason: " + status);
+		}
+	      });
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
 		  var partyName = document.getElementById("partyName").value;
 		  var partyAddress = document.getElementById("partyAddress").value;
 		  var partyComment = document.getElementById("partyComment").value;
