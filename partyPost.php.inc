@@ -43,7 +43,7 @@ class partyPost
 	}
 	return 0;	
     }
-    public function addNewParty($clientName, $partyName, $partyLocation, $partyTime, $comment)
+    public function addNewParty($clientName, $partyName, $partyLocation, $partyLat, $partyLng, $partyTime, $comment)
     {
       if($this->getPartyID($partyName) != 0)
       {
@@ -62,8 +62,8 @@ class partyPost
       $comment = $this->db->real_escape_string($comment);
       
       //STR_TO_DATE('$partyTime','%m/%d/%Y %h:%i:%s %p')
-      $addQuery = "insert into parties (clientName, partyName, partyLocation, partyTime, partyComments) 
-			values ('$clientName','$partyName', '$partyLocation', STR_TO_DATE('$partyTime','%m/%d/%Y %h:%i %p'), '$comment');";
+      $addQuery = "insert into parties (clientName, partyName, partyLocation, lat, lng, partyTime, partyComments) 
+			values ('$clientName','$partyName', '$partyLocation', '$partyLat', '$partyLng', STR_TO_DATE('$partyTime','%m/%d/%Y %h:%i %p'), '$comment');";
       $results = $this->db->query($addQuery);
       if(!$results)
       {

@@ -30,8 +30,9 @@ if (!$db_selected) {
 }
 // Select all the rows in the markers table
 //$query = "SELECT * FROM markers WHERE 1";
-$query = sprintf("SELECT address, name, lat, lng, ( 3959 * acos( cos( radians('%s') ) * cos( radians( lat ) ) * cos( radians( lng ) - radians('%s') ) + sin( radians('%s') ) * sin( radians( lat ) ) ) ) AS distance FROM markers HAVING distance < '%s' ORDER BY distance LIMIT 0 , 20",
-  mysql_real_escape_string($center_lat),
+//$query = sprintf("SELECT address, name, lat, lng, ( 3959 * acos( cos( radians('%s') ) * cos( radians( lat ) ) * cos( radians( lng ) - radians('%s') ) + sin( radians('%s') ) * sin( radians( lat ) ) ) ) AS distance FROM markers HAVING distance < '%s' ORDER BY distance LIMIT 0 , 20",
+  $query = sprintf("SELECT partyLocation, partyName, lat, lng, ( 3959 * acos( cos( radians('%s') ) * cos( radians( lat ) ) * cos( radians( lng ) - radians('%s') ) + sin( radians('%s') ) * sin( radians( lat ) ) ) ) AS distance FROM parties HAVING distance < '%s' ORDER BY distance LIMIT 0 , 20",
+   mysql_real_escape_string($center_lat),
   mysql_real_escape_string($center_lng),
   mysql_real_escape_string($center_lat),
   mysql_real_escape_string($radius));
@@ -47,8 +48,10 @@ echo '<markers>';
 while ($row = @mysql_fetch_assoc($result)){
   // ADD TO XML DOCUMENT NODE
   echo '<marker ';
-  echo 'name="' . parseToXML($row['name']) . '" ';
-  echo 'address="' . parseToXML($row['address']) . '" ';
+  //echo 'name="' . parseToXML($row['name']) . '" ';
+ // echo 'address="' . parseToXML($row['address']) . '" ';
+  echo 'name="' . parseToXML($row['partyName']) . '" ';
+  echo 'address="' . parseToXML($row['partyLocation']) . '" ';
   echo 'lat="' . $row['lat'] . '" ';
   echo 'lng="' . $row['lng'] . '" ';
   

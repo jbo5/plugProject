@@ -148,45 +148,55 @@
 
 		  display( lng ); 
 
-		} else {
+		
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+		    
+	    
+	    
+		    var partyName = document.getElementById("partyName").value;
+		    var partyAddress = document.getElementById("partyAddress").value;
+		    var partyComment = document.getElementById("partyComment").value;
+		    var partyTime = document.getElementById("partyDate").value;
+		    var partyPhoto = document.getElementById("file-upload").value;
+		    var username = document.getElementById("username").value;
+		    var password = document.getElementById("password").value;
+		    
+		    
+		    
+		    request = new XMLHttpRequest();
+		    request.onreadystatechange = handleResponse;
+		    request.open("POST","rpc.php",true);
+		    request.setRequestHeader("Content-type","application/json");
+		    var data = JSON.stringify({request:"Post Party", partyName: partyName ,partyAddress: partyAddress, 
+						lat: lat, lng : lng, partyComment: partyComment, partyTime: partyTime, 
+						partyPhoto: partyPhoto,password: password, username: username});
+		    request.send(data);
+		  
+		  
+		  } else {
 		  alert("Geocode was not successful for the following reason: " + status);
 		}
 	      });
-	  
-	  
-	  
-	  
-	  
-	  
-	  
-	  
-	  
-	  
-	  
-	  
-	  
-	  
-	  
-		  var partyName = document.getElementById("partyName").value;
-		  var partyAddress = document.getElementById("partyAddress").value;
-		  var partyComment = document.getElementById("partyComment").value;
-		  var partyTime = document.getElementById("partyDate").value;
-		  var partyPhoto = document.getElementById("file-upload").value;
-		  var username = document.getElementById("username").value;
-		  var password = document.getElementById("password").value;
-		  
-		  
-		  
-		  request = new XMLHttpRequest();
-		  request.onreadystatechange = handleResponse;
-		  request.open("POST","rpc.php",true);
-		  request.setRequestHeader("Content-type","application/json");
-		  var data = JSON.stringify({request:"Post Party", partyName: partyName ,partyAddress: partyAddress,
-					      partyComment: partyComment, partyTime: partyTime, partyPhoto: partyPhoto,
-					      password: password, username: username});
-		  request.send(data);
+	      
 		  
 	  }
+	  
+	  
+	  
+	  
+	  
+	  
 	  function handleResponse()
 	  {
 		  document.getElementById("output").innerHTML = "<H1>GOT HERE</H1>"+

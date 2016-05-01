@@ -135,6 +135,8 @@ switch($request["request"])
 	$password = $request["password"];
 	$partyName= $request["partyName"];
 	$partyLocation = $request["partyAddress"];
+	$partyLat = $request["lat"];
+	$partyLng = $request["lng"];
 	
 	//$address = $_POST["address"];
 	//$city = $_POST["city"];
@@ -160,7 +162,7 @@ switch($request["request"])
 	{
 		$response = "Login Successful!<p>";
 		$post = new partyPost("connect.ini");
-		$response = $post->addNewParty($username, $partyName, $partyLocation, $partyTime, $partyComment);
+		$response = $post->addNewParty($username, $partyName, $partyLocation, $partyLat, $partyLng, $partyTime, $partyComment);
 		if ($response['success']===true)
 		{
 			$response = "Party Positng Successful!<p>";
