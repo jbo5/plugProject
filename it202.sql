@@ -18,6 +18,8 @@
     clientName varchar(32),
     partyName varchar(32),    
     partyLocation varchar(50),
+    `lat` FLOAT( 10, 6 ) NOT NULL ,
+    `lng` FLOAT( 10, 6 ) NOT NULL,
     partyTime dateTime,
     partyComments varchar(128),
     partyRating INT(11)
