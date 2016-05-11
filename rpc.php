@@ -1,5 +1,4 @@
 <?php
-
 require_once "partyPost.php.inc";
 require_once "clientDB.php.inc";
 require_once "searchParty.php.inc";
@@ -27,7 +26,9 @@ switch($request["request"])
 	$response = $login->validateClient($username,$password);
 	if ($response['success']===true)
 	{
+	
 		$response = "Login Successful!<p>";
+		
 	}
 	else
 	{

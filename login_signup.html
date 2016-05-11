@@ -3,6 +3,7 @@
 
   <head>
     <meta char-set="utf-8">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
     <title>The Plug</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
      
@@ -34,11 +35,18 @@
 		request.setRequestHeader("Content-type","application/json");
 		var data = JSON.stringify({request:"login",username:name,password:pw});
 		request.send(data);
+		
 	}
 	function handleResponse()
-	{
+	{	
 		document.getElementById("output").innerHTML = "<H1>GOT HERE</H1>"+
 			"<p>"+request.responseText+"</p>";
+			
+			
+			if(request.responseText == "Login Successful!<p>"){
+			    console.log("works");
+			    window.location.assign("index.html");
+			}
 	}
 	</script>
 
@@ -70,6 +78,11 @@
 	{
 		document.getElementById("output").innerHTML = "<H1>GOT HERE</H1>"+
 			"<p>"+request.responseText+"</p>";
+			window.location = 'index.html';
+			if(request.responseText == "Login Successful!<p>"){
+			    console.log("works");
+			    window.location = 'index.html';
+			}
 	}
 	</script>
 	  
