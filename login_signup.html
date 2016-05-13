@@ -43,10 +43,11 @@
 			"<p>"+request.responseText+"</p>";
 			
 			
-			if(request.responseText == "Login Successful!<p>"){
+			/*if(request.responseText == ""){
 			    console.log("works");
 			    window.location.assign("index.html");
 			}
+			*/
 	}
 	</script>
 
@@ -78,8 +79,9 @@
 	{
 		document.getElementById("output").innerHTML = "<H1>GOT HERE</H1>"+
 			"<p>"+request.responseText+"</p>";
-			window.location = 'index.html';
-			if(request.responseText == "Login Successful!<p>"){
+			//window.location = 'index.html';
+			console.log(request.responseText);
+			if(request.responseText == ""){
 			    console.log("works");
 			    window.location = 'index.html';
 			}
